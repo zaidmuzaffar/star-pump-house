@@ -4,11 +4,36 @@ A free, web-based shop management system for **Star Pump House**, a shop selling
 
 It runs in any browser (laptop, tablet or phone) and is hosted for free on **Firebase**.
 
-> Live: `https://star-pump-house.web.app`
+## Live demo
+
+**[starpumphouse.web.app](https://starpumphouse.web.app)**
+
+| Demo login | |
+|---|---|
+| Email | `demo@starpumphouse.com` |
+| Password | `Star123@` |
+
+The demo account is filled with made-up products, customers and six months of sales, so every page has something to show. It is separate from the real shop's data. Please don't change the password. If you delete or edit things, that's fine: the demo is restored from a backup from time to time.
+
+---
+
+## About this project
+
+I built this for my own shop, where it is used every day in place of paper registers. Before it, stock, sales, credit (*udhaar*) and supplier bills were kept in notebooks, and nobody knew the real profit or who owed how much.
+
+**My role:** I planned the features around the shop's real needs, built and tested every page, and deployed and maintain it. It started as a simple stock table and grew step by step into the full system below.
+
+**What I learned**
+- Designing a NoSQL data model (Cloud Firestore) for real business records, and keeping stock, cash, credit and profit consistent with each other.
+- Authentication, per-user security rules, role-based access (owner vs salesman) and Firebase App Check.
+- Building an AI assistant with **function calling**: the model reads the shop's records through small tools and opens pre-filled forms instead of writing data itself.
+- Plain JavaScript ES modules with no framework: offline caching, cache-busting, PDF generation in the browser and a responsive phone layout.
+- Working with a real user: turning daily feedback from the shop into fixes and new features.
 
 ---
 
 ## Table of contents
+1. [Live demo](#live-demo) · [About this project](#about-this-project)
 1. [Features](#features)
 2. [Screenshots](#screenshots)
 3. [Tech stack](#tech-stack)
@@ -236,5 +261,3 @@ The local cache cuts reads a lot. This is plenty for a single shop.
 - Barcode / QR scanning for products
 
 ---
-
-*Built step by step by the shop owner with an AI assistant.*
