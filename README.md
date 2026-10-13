@@ -106,7 +106,8 @@ I built this for my own shop, where it is used every day in place of paper regis
 | ![Ask AI](docs/screenshots/ai.png) | ![Phone](docs/screenshots/phone.png) |
 
 All screens (desktop, dark mode and phone) are in **[UI Screenshots (PDF)](docs/screenshots/Star_Pump_House_UI_Screenshots.pdf)**. The full project overview is in **[Project Overview (PDF)](docs/screenshots/Star_Pump_House_Project_Overview.pdf)**. Screenshots use demo data.
-**Case study:** [Full case study (PDF)](docs/screenshots/Star_Pump_House_Full_Case_Study.pdf) · [One-page summary (PDF)](docs/screenshots/Star_Pump_House_Case_Study.pdf)
+
+**Case study:** [Full case study (PDF)](docs/screenshots/Star_Pump_House_Full_Case_Study.pdf)
 
 ---
 
