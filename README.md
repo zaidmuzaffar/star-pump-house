@@ -260,6 +260,4 @@ The local cache cuts reads a lot. This is plenty for a single shop.
 - WhatsApp udhaar reminders to customers
 - Barcode / QR scanning for products
 
----
-
-*Built step by step by the shop owner with an AI assistant.*
+--
