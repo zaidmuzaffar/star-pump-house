@@ -778,6 +778,11 @@ html[data-theme="dark"] .overlay{background:rgba(232,232,232,.62)}
   .shell.menu-open ~ .side-scrim,body:has(.shell.menu-open) .side-scrim{opacity:1;pointer-events:auto}
   html[data-theme="dark"] .side-scrim{background:rgba(240,240,240,.5)}
   body.no-scroll{overflow:hidden}
+  /* the open menu scrolls by itself; the page behind it stays still */
+  .side{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+  .side > *{flex-shrink:0}
+  html.menu-lock{overflow:hidden}
+  .side-scrim{touch-action:none;overscroll-behavior:contain}
 
   /* top bar: ☰ menu · shop name · (theme button sits on the right) */
   .mbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:50;margin:-20px -16px 0 -16px;padding:10px 64px 10px 12px;

@@ -45,8 +45,24 @@
   scrim.className = "side-scrim";
   document.body.appendChild(scrim);
 
-  function openMenu() { shell.classList.add("menu-open"); menuBtn.setAttribute("aria-expanded", "true"); document.body.classList.add("no-scroll"); }
-  function closeMenu() { shell.classList.remove("menu-open"); menuBtn.setAttribute("aria-expanded", "false"); document.body.classList.remove("no-scroll"); }
+  // Lock the page behind the open menu (iPhone ignores overflow:hidden, so pin the body in place)
+  let lockedY = null;
+  function lockPage() {
+    if (lockedY !== null) return;
+    lockedY = window.scrollY || 0;
+    const b = document.body.style;
+    b.position = "fixed"; b.top = -lockedY + "px"; b.left = "0"; b.right = "0"; b.width = "100%";
+    document.documentElement.classList.add("menu-lock");
+  }
+  function unlockPage() {
+    if (lockedY === null) return;
+    const b = document.body.style;
+    b.position = ""; b.top = ""; b.left = ""; b.right = ""; b.width = "";
+    document.documentElement.classList.remove("menu-lock");
+    window.scrollTo(0, lockedY); lockedY = null;
+  }
+  function openMenu() { shell.classList.add("menu-open"); menuBtn.setAttribute("aria-expanded", "true"); document.body.classList.add("no-scroll"); lockPage(); side.scrollTop = 0; }
+  function closeMenu() { shell.classList.remove("menu-open"); menuBtn.setAttribute("aria-expanded", "false"); document.body.classList.remove("no-scroll"); unlockPage(); }
   menuBtn.addEventListener("click", () => (shell.classList.contains("menu-open") ? closeMenu() : openMenu()));
   scrim.addEventListener("click", closeMenu);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && shell.classList.contains("menu-open")) closeMenu(); });
