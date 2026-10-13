@@ -98,9 +98,11 @@ All screens (desktop, dark mode and phone) are in **[UI Screenshots (PDF)](docs/
 ---
 
 ## Project structure
-All files sit in the Firebase Hosting public folder.
+All website files are in the **`src/`** folder (the Firebase Hosting public folder). Documentation is in **`docs/`**.
 
 ```
+src/
+├── 404.html               → page-not-found page
 ├── index.html             → opens the Dashboard (shows a loader while checking login)
 ├── login.html / login.js  → login, forgot password, "signed out on another tab" note
 ├── signup.html / signup.js
@@ -161,11 +163,11 @@ Top level: `staffIndex/{email}` → `{ownerUid, name}`. This is how a salesman's
 ## Setup: run your own copy
 1. Create a Firebase project (free Spark plan) at <https://console.firebase.google.com>.
 2. **Authentication** → enable **Email/Password**.
-3. **Firestore Database** → create the database, then paste `firestore.rules` into **Rules** → Publish.
+3. **Firestore Database** → create the database, then paste `src/firestore.rules` into **Rules** → Publish.
 4. **Project settings → Your apps → Web app (`</>`)** → copy the `firebaseConfig` into `firebase-config.js`.
 5. *(For the assistant)* **AI Logic** → enable the Gemini Developer API.
 6. Install the Firebase CLI: `npm install -g firebase-tools`, then `firebase login`.
-7. In the project folder run `firebase init hosting`. Choose your project and set the public folder to the folder with these files. Answer "No" to single-page app.
+7. In the project folder run `firebase init hosting`. Choose your project and set the public folder to `src`. Answer "No" to single-page app.
 8. To try it locally, run `firebase serve`, or any static server such as `python3 -m http.server`.
 
 > The Firebase web `apiKey` is not a secret: access is controlled by Authentication, Firestore rules and App Check. Never commit service-account keys.
@@ -186,7 +188,7 @@ Then hard-refresh the browser (**Cmd/Ctrl + Shift + R**).
 
 ## Security
 - **Login required on every page.** Sessions end when the browser is closed. Only one login is allowed per browser.
-- **Firestore rules** (`firestore.rules`):
+- **Firestore rules** (`src/firestore.rules`):
   - The owner has full access to `users/{own uid}/**`.
   - A salesman can only read products, sales and settings, create sales, and lower stock. The rules only allow changes to quantity, length and bundle fields.
   - `staffIndex` can be written only by the owner.
