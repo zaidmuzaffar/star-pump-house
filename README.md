@@ -80,7 +80,7 @@ It runs in any browser (laptop, tablet or phone) and is hosted for free on **Fir
 | **Ask AI** | **Phone** |
 | ![Ask AI](docs/screenshots/ai.png) | ![Phone](docs/screenshots/phone.png) |
 
-All screens (desktop, dark mode and phone) are in **[`docs/Star_Pump_House_UI_Screenshots.pdf`](docs/Star_Pump_House_UI_Screenshots.pdf)**. The full project overview is in **[`docs/Star_Pump_House_Project_Overview.pdf`](docs/Star_Pump_House_Project_Overview.pdf)**. Screenshots use demo data.
+All screens (desktop, dark mode and phone) are in **[UI Screenshots (PDF)](docs/screenshots/Star_Pump_House_UI_Screenshots.pdf)**. The full project overview is in **[Project Overview (PDF)](docs/screenshots/Star_Pump_House_Project_Overview.pdf)**. Screenshots use demo data.
 
 ---
 
