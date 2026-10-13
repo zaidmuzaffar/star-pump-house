@@ -1,0 +1,41 @@
+rules_version = '2';
+// Star Pump House — Firestore rules (Update 44: salesman logins)
+// Owner: full access to his own folder users/{his uid}/...
+// Salesman (added by the owner on the Profile page): can only SELL —
+//   read the Stock List, lower stock when selling, add sales, read sales (old-customer suggestions) and the shop name.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function myEmail() { return request.auth.token.email.lower(); }
+    function isStaff(owner) {
+      return signedIn() && request.auth.token.email != null
+        && exists(/databases/$(database)/documents/users/$(owner)/staff/$(myEmail()));
+    }
+
+    // Owner: everything in his own folder
+    match /users/{owner}/{document=**} {
+      allow read, write: if signedIn() && request.auth.uid == owner;
+    }
+
+    // Salesman: only what selling needs
+    match /users/{owner}/products/{id} {
+      allow read: if isStaff(owner);
+      allow update: if isStaff(owner)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['quantity', 'length', 'bundle', 'perBundle']);
+    }
+    match /users/{owner}/sales/{id} {
+      allow read, create: if isStaff(owner);
+    }
+    match /users/{owner}/settings/{id} {
+      allow read: if isStaff(owner);
+    }
+
+    // Which shop a salesman's login belongs to (written by the owner)
+    match /staffIndex/{email} {
+      allow read: if signedIn() && (myEmail() == email || resource.data.ownerUid == request.auth.uid);
+      allow create: if signedIn() && request.resource.data.ownerUid == request.auth.uid;
+      allow update, delete: if signedIn() && resource.data.ownerUid == request.auth.uid;
+    }
+  }
+}

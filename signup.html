@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up - Star Pump House</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=57">
+  <script src="theme.js?v=44"></script>
+</head>
+<body>
+<div class="auth">
+  <div class="auth-brand">
+    <div class="auth-logo"><div class="brand-mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"></path><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"></path></svg></div><span>Star Pump House</span></div>
+    <div class="auth-pitch"><h1>Set up your manager account.</h1><p>One account keeps your stock, sales and pending payments together. Only you can see your data.</p></div>
+    <ul class="auth-points steps"><li><span class="step-n">1</span>Create your account</li><li><span class="step-n">2</span>Verify your email from your inbox</li><li><span class="step-n">3</span>Login and add your stock</li></ul>
+  </div>
+  <div class="auth-side">
+    <form class="auth-form wide" id="signup-form" novalidate>
+      <div class="stack"><h2>Create account</h2><span class="lead">It takes a minute. All fields are required.</span></div>
+      <label class="fgroup"><span class="lbl">Username <span class="req">*</span></span>
+        <span class="fld"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path></svg><input type="text" id="full-name" placeholder="Shown on your dashboard" autocomplete="username"></span></label>
+      <label class="fgroup"><span class="lbl">Email <span class="req">*</span></span>
+        <span class="fld"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email"></span></label>
+      <div class="pw-grid">
+        <label class="fgroup"><span class="lbl">Password <span class="req">*</span></span><span class="fld"><input type="password" id="signup-password" placeholder="Your password" autocomplete="new-password"></span></label>
+        <label class="fgroup"><span class="lbl">Confirm password <span class="req">*</span></span><span class="fld"><input type="password" id="confirm-password" placeholder="Type it again" autocomplete="new-password"></span></label>
+      </div>
+      <span class="hint" style="margin-top:-8px">6-14 characters, with uppercase, lowercase, a number &amp; a special character.</span>
+      <button type="submit" class="btn-auth" id="signup-btn">Create account</button>
+      <span class="auth-switch">Already have an account? <a href="login.html">Login</a></span>
+    </form>
+
+    <div class="auth-done" id="signup-done" hidden>
+      <div class="mail-badge"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></div>
+      <h2>Check your email</h2>
+      <p>We sent a verification link to <strong id="sent-to">your email address</strong>. Open it to verify your account, then come back and login. Check your spam folder too.</p>
+      <a href="login.html" class="btn pri" style="height:50px;padding:0 24px;font-size:15px">Go to Login</a>
+      <button type="button" class="linkbtn" id="signup-back">Wrong email? Go back</button>
+    </div>
+  </div>
+</div>
+  <script type="module" src="signup.js?v=56"></script>
+</body>
+</html>
