@@ -116,7 +116,9 @@ function askShopName(me) {
 }
 
 // Wipe this tab's login and the records saved on this device.
+let leaving = false; // true while signing out, so closing listeners don't show error popups
 async function endSession(to) {
+  leaving = true;
   try { ["sph-role", WHO_KEY, "sph-shop"].forEach((k) => sessionStorage.removeItem(k)); } catch (e) {}
   try { await signOut(auth); } catch (e) {}
   try { await terminate(db); await clearIndexedDbPersistence(db); } catch (e) {}
@@ -158,7 +160,11 @@ export function listen(uid, name, callback) {
     const entries = [];
     snap.forEach((d) => entries.push([d.id, d.data()]));
     callback(entries);
-  }, (error) => alert(`Error loading ${name}: ` + error.message));
+  }, (error) => {
+    // While signing out the database is closed on purpose; those errors are expected, so stay quiet.
+    if (leaving || !auth.currentUser) return;
+    alert(`Error loading ${name}: ` + error.message);
+  });
 }
 
 export function showToast(el, html, ms = 7000) {
